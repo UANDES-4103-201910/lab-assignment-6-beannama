@@ -1412,3 +1412,67 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.0ms)
 
 
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/orenjikun/.rvm/gems/ruby-2.5.1/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for 127.0.0.1 at 2019-04-17 09:22:18 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 998ms (Views: 970.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-04-17 09:22:31 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7QXX1dZVyHFhZgTMm6Nu43eKsAdgTlUyhBhw3XpUirPGb5G/ifkS19J90k+QtD1DFB7JeBmBWeZwJlF0Sr2AYg==", "session"=>{"email"=>"asdasd@asdas.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+No template found for SessionsController#create, rendering head :no_content
+Completed 204 No Content in 66ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2019-04-17 09:22:43 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (93.4ms)
+Completed 200 OK in 128ms (Views: 118.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2019-04-17 09:22:57 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"et7Y5D4U9TjY6G5BXWYAQPEIkqhFMVcFTAPy+bf7rhiiTqRuqiMqxBJLGdBBuMiO9U0KRHp/+nQfVAfDg0bwPA==", "registrations"=>{"name"=>"dsfdsd", "last_name"=>"dfdsf", "email"=>"asdasd", "phone"=>"1231231", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+No template found for RegistrationsController#create, rendering head :no_content
+Completed 204 No Content in 45ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-04-17 09:23:06 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 32ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-04-17 10:37:08 -0400
+Processing by UsersController#new as HTML
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :is_user_logged_in? rendered or redirected
+Completed 302 Found in 99ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-04-17 10:37:09 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 811ms (Views: 763.9ms | ActiveRecord: 0.0ms)
+
+

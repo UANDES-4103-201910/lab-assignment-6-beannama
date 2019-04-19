@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :is_user_logged_in?
 
+
   # GET /users
   # GET /users.json
   def index
@@ -25,19 +26,38 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    #complete this method
+    @user = User.create(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to home_path, notice: 'Welcome to the site' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
     #complete this method
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Update Success.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+    end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
     #complete this method
+
   end
 
   private
@@ -50,4 +70,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :last_name, :email, :password, :phone)
     end
+
+
+
+
 end
