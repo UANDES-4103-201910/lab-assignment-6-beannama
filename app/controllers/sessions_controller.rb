@@ -4,10 +4,11 @@ class SessionsController < ApplicationController
 
 	def create
 		#complete this method
-		user = User.find_by(email: user_params[:email])
-		if user && user.confirm_password(user_params[:password])
+		user = User.find_by(email: session_params[:email], password: session_params[:password])
+		if user.present?
+			session[:user_id] = user.id
 			flash[:notice] = 'Login Success'
-			redirect_to user
+			redirect_to users_path
 		else
 			flash[:notice] = 'Login Failed'
 			redirect_to root_path
@@ -22,7 +23,7 @@ class SessionsController < ApplicationController
 	end
 
 
-	def user_params
-		params.require(:user).permit(:name, :last_name, :email, :password, :phone)
+	def session_params
+		params.require(:session).permit(:email, :password)
 	end
 end
